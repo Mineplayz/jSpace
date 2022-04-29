@@ -3,8 +3,8 @@ class data{
     static peer;
     static client;
 }
-function net(){
-    function Server(id)
+var net = new function(){
+    this.Server = function(id)
     {
         data.peer = new Peer(Pointer_stringify(id));
         data.peer.on('error', function(error){
