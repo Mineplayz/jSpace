@@ -28,15 +28,15 @@ var net = new function(){
                 data.client.set(con.peer, con);
                 data.client.get(con.peer).on('data', function(msg){
                     console.log("\\/" + msg);
-                    SendMessage(data.JSInterface, "Receive", msg);
+                    SendMSG("Receive", msg);
                 });
                 data.client.get(con.peer).on('close', function(){
                     alert(con.peer + " disconnedted!");
-                    SendMessage(data.JSInterface, "H_CDisconnected", con.peer);
+                    SendMSG("H_CDisconnected", con.peer);
                     
                     data.client.delete(con.peer);
                 });
-                SendMessage(data.JSInterface, "PeerCompleted", con.peer);
+                SendMSG("PeerCompleted", con.peer);
             });
         });
     }
@@ -44,14 +44,14 @@ var net = new function(){
     {
         data.client = data.peer.connect((pid));
         data.client.on('open', function(){
-            SendMessage(data.JSInterface, "PeerCompleted", "SUCCESS");
+            SendMSG("PeerCompleted", "SUCCESS");
             data.client.on('data', function(msg){
                     console.log("\\/" + msg);
-                    SendMessage(data.JSInterface, "Receive", msg);
+                    SendMSG("Receive", msg);
             });
             data.client.on('close', function(){
                 alert("Disconnected");
-                SendMessage(data.JSInterface, "H_CDisconnected", "");
+                SendMSG("H_CDisconnected", "");
             })
         });
     }
