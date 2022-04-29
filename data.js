@@ -6,7 +6,7 @@ class data{
 var net = new function(){
     this.Server = function(id)
     {
-        data.peer = new Peer(Pointer_stringify(id));
+        data.peer = new Peer((id));
         data.peer.on('error', function(error){
             alert("[ERROR]" + error.type);
             SendMessage(data.JSInterface, 'Error', error.type);
@@ -41,7 +41,7 @@ var net = new function(){
     }
     function Join(pid)
     {
-        data.client = data.peer.connect(Pointer_stringify(pid));
+        data.client = data.peer.connect((pid));
         data.client.on('open', function(){
             SendMessage(data.JSInterface, "PeerCompleted", "SUCCESS");
             data.client.on('data', function(msg){
