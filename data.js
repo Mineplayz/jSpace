@@ -3,19 +3,20 @@ class data{
     static peer;
     static client;
 }
+var SendMSG;
 var net = new function(){
     this.Server = function(id)
     {
         data.peer = new Peer((id));
         data.peer.on('error', function(error){
             alert("[ERROR]" + error.type);
-            SendMessage(data.JSInterface, 'Error', error.type);
+            SendMSG('Error', error.type);
         });
         data.peer.on('open', function(id){
-            SendMessage(data.JSInterface, 'OnConnected_Server', "SUCCESS");
+            SendMSG('OnConnected_Server', "SUCCESS");
         });
     }
-    function Host()
+    this.Host = function()
     {
         data.client = new Map();
         data.peer.on('connection', function(con){
@@ -39,7 +40,7 @@ var net = new function(){
             });
         });
     }
-    function Join(pid)
+    this.Join = function(pid)
     {
         data.client = data.peer.connect((pid));
         data.client.on('open', function(){
