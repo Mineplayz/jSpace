@@ -3,8 +3,8 @@ class data{
     static peer;
     static client;
 }
-class net{
-    Server(id)
+function net(){
+    function Server(id)
     {
         data.peer = new Peer(Pointer_stringify(id));
         data.peer.on('error', function(error){
@@ -15,7 +15,7 @@ class net{
             SendMessage(data.JSInterface, 'OnConnected_Server', "SUCCESS");
         });
     }
-    Host()
+    function Host()
     {
         data.client = new Map();
         data.peer.on('connection', function(con){
@@ -39,7 +39,7 @@ class net{
             });
         });
     }
-    Join(pid)
+    function Join(pid)
     {
         data.client = data.peer.connect(Pointer_stringify(pid));
         data.client.on('open', function(){
@@ -54,5 +54,5 @@ class net{
             })
         });
     }
-    
+
 }
