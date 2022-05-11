@@ -5,13 +5,13 @@
     <script src="peer.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>jSpace</title>
+    <title>jSpace - 0.1 Android Support</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=100% height=100%></canvas>
+      <canvas id="unity-canvas" width=800 height=800></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -66,7 +66,7 @@
         streamingAssetsUrl: "StreamingAssets",
         companyName: "HTGames",
         productName: "jSpace",
-        productVersion: "1.0",
+        productVersion: "0.1 Android Support",
         showBanner: unityShowBanner,
       };
 
@@ -77,11 +77,12 @@
       // the canvas DOM size and WebGL render target sizes yourself.
       // config.matchWebGLToCanvasSize = false;
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
         // Avoid draining fillrate performance on mobile devices,
         // and default/override low DPI mode on mobile browsers.
         config.devicePixelRatio = 1;
-        unityShowBanner("jSpace isn't Optimized for this Device.");
+        unityShowBanner("jSpace is not fully optimized for mobile.");
       } else {
         canvas.style.width = "100%";
         canvas.style.height = "100%";
